@@ -37,13 +37,16 @@ export default class App extends Component {
       return <h1 className="loading">Loading Projects</h1>;
     }
 
-    // {projects.map(project => (
-    // ))}
+    if (!projects.length) {
+      return <p className="alert">No projects found.</p>;
+    }
 
     return (
       <React.Fragment>
         <p>Showing {count} of {projects.length} projects.</p>
-        <Project data={projects[0]} />
+        {projects.map(project => (
+          <Project data={project} />
+        ))}
       </React.Fragment>
     );
   }
