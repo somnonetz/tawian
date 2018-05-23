@@ -45,7 +45,7 @@ export default class App extends Component {
       <React.Fragment>
         <p>Showing {count} of {projects.length} projects.</p>
         {projects.map(project => (
-          <Project data={project} />
+          <Project key={project.id} data={project} />
         ))}
       </React.Fragment>
     );
