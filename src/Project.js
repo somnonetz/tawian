@@ -13,7 +13,7 @@ export default class Project extends Component {
   }
 
   state = {
-    red: null,
+    red: undefined,
   }
 
   componentDidMount() {
@@ -28,16 +28,23 @@ export default class Project extends Component {
         const content = atob(response.data.content);
         const json = yaml.safeLoad(content);
         this.setState({ red: json });
-
       })
-      .catch((error) => {
-        if (error.response.status === 404) return;
-        console.error(error);
+      .catch((/* error */) => {
+        this.setState({ red: null });
       });
   }
 
   renderRed() {
     const { red } = this.state;
+
+    if (red === undefined) {
+      return <h2 className="loading">Loading RED data</h2>;
+    }
+
+    if (red === null) {
+      return <p className="alert">No RED file found.</p>;
+    }
+
     const { inputs, outputs, baseCommand, doc } = red.cli;
 
     const li = (value, key) => (
@@ -74,7 +81,6 @@ export default class Project extends Component {
 
   render() {
     const { data } = this.props;
-    const { red } = this.state;
 
     return (
       <article key={data.id}>
@@ -91,10 +97,7 @@ export default class Project extends Component {
           }
         </div>
 
-        {red
-          ? this.renderRed()
-          : <h2 className="loading">Loading RED data</h2>
-        }
+        {this.renderRed()}
       </article>
     );
   }
