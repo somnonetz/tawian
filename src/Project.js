@@ -5,6 +5,7 @@ import axios from 'axios';
 import yaml from 'js-yaml';
 import RED from './RED';
 import Bibtex from './Bibtex';
+import Zenodo from './Zenodo';
 
 const FILES = {
   'red.yml': 'loadRedFile',
@@ -93,6 +94,8 @@ export default class Project extends Component {
             <span>License: <a href={data.license.url}>{data.license.spdx_id}</a></span>
           }
         </div>
+
+        <Zenodo project={data.full_name} />
 
         <RED red={red} />
 
