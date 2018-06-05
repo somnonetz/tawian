@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Bibliography from 'react-bibliography';
 
-export default class Project extends Component {
+export default class Bibtex extends Component {
 
   static propTypes = {
     bibtex: PropTypes.string,
@@ -16,7 +16,7 @@ export default class Project extends Component {
     const { bibtex } = this.props;
 
     if (bibtex === null) {
-      return null; //<p className="alert">No Bibtext file found.</p>;
+      return null; // <p className="alert">No Bibtext file found.</p>;
     }
 
     return (

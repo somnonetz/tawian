@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
-export default class Project extends Component {
+export default class RED extends Component {
 
   static propTypes = {
     red: PropTypes.object,
