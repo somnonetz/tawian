@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Project from './Project';
+import Searchbar from './Searchbar';
 
 const searchTopic = 'tawian';
 
@@ -12,7 +13,15 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    const url = `https://api.github.com/search/repositories?q=topic:${searchTopic}`;
+    this.load();
+  }
+
+  onSearchChange = (searchTerm) => {
+    this.load(searchTerm);
+  }
+
+  load = (searchTerm = '') => {
+    const url = `https://api.github.com/search/repositories?q=${searchTerm} topic:${searchTopic}`;
     const headers = {
       Accept: 'application/vnd.github.mercy-preview+json',
     };
@@ -37,16 +46,17 @@ export default class App extends Component {
       return <h1 className="loading">Loading Projects</h1>;
     }
 
-    if (!projects.length) {
-      return <p className="alert">No projects found.</p>;
-    }
-
     return (
       <React.Fragment>
-        <p>Showing {count} of {projects.length} projects.</p>
-        {projects.map(project => (
-          <Project key={project.id} data={project} />
-        ))}
+        <div className="grid-inline">
+          <p>Showing {count} of {projects.length} projects.</p>
+          <Searchbar onChange={this.onSearchChange} />
+        </div>
+
+        {projects.length
+          ? projects.map(project => <Project key={project.id} data={project} />)
+          : <p className="alert">No projects found.</p>
+        }
       </React.Fragment>
     );
   }
