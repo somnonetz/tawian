@@ -16,6 +16,7 @@
     "lodash": "^4.17.4",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
+    "react-bibliography": "0.0.4",
     "react-dom": "^16.3.2",
     "tawian-frontend": "^2.0.0",
     "typeface-cousine": "0.0.54"

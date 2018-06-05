@@ -3,8 +3,14 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import axios from 'axios';
 import yaml from 'js-yaml';
+import RED from './RED';
+import Bibtex from './Bibtex';
 
-const FILENAME = 'red.yml';
+const FILES = {
+  'red.yml': 'loadRedFile',
+  'references.bib': 'loadBibFile',
+  'filesystem.json': 'loadVmFile',
+};
 
 export default class Project extends Component {
 
@@ -13,80 +19,71 @@ export default class Project extends Component {
   }
 
   state = {
-    red: undefined,
+    red: null,
+    bibtex: null,
   }
 
   componentDidMount() {
-    const { data } = this.props;
-    const url = `https://api.github.com/repos/${data.full_name}/contents/${FILENAME}`;
+    this.loadFiles();
+  }
+
+  loadFiles = () => {
+    this.loadFile()
+      .then((response) => {
+        _.each(response.data, (file) => {
+          if (FILES[file.name] && file.size > 0) {
+            this[FILES[file.name]](this.loadFile(file.name));
+          }
+        })
+        this.setState({ files: response.data });
+      });
+  }
+
+  loadRedFile = (promise) => {
+    promise.then((response) => {
+      const content = atob(response.data.content);
+      const json = yaml.safeLoad(content);
+      this.setState({ red: json });
+    });
+  }
+
+  loadBibFile = (promise) => {
+    promise.then((response) => {
+      const json = JSON.parse(atob(response.data.content));
+      this.setState({ bibtex: json });
+    });
+  }
+
+  loadVmFile = (promise) => {
+    promise.then((response) => {
+      // debugger;
+      // this.setState({ vm: json });
+    });
+  }
+
+  loadFile = (filename = '') => {
+    const url = `https://api.github.com/repos/${this.props.data.full_name}/contents/${filename}`;
     const headers = {
       Accept: 'application/vnd.github.mercy-preview+json',
     };
 
-    axios.get(url, { headers })
-      .then((response) => {
-        const content = atob(response.data.content);
-        const json = yaml.safeLoad(content);
-        this.setState({ red: json });
-      })
-      .catch((/* error */) => {
-        this.setState({ red: null });
-      });
-  }
-
-  renderRed() {
-    const { red } = this.state;
-
-    if (red === undefined) {
-      return <h2 className="loading">Loading RED data</h2>;
-    }
-
-    if (red === null) {
-      return <p className="alert">No RED file found.</p>;
-    }
-
-    const { inputs, outputs, baseCommand, doc } = red.cli;
-
-    const li = (value, key) => (
-      <li key={key}>
-        <strong>{key}</strong>
-        {' '}
-        <span className="tag tag-info">{value.type}</span>
-        {' '}
-        <small>{value.doc}</small>
-      </li>
-    );
-
-    return (
-      <React.Fragment>
-        <div>
-          <strong>{baseCommand}</strong>: {doc}
-        </div>
-        <div className="grid grid-middle" style={{ clear: 'both' }}>
-          <div className="cell">
-            <ul className="list-group list-striped">
-              {_.map(inputs, li)}
-            </ul>
-          </div>
-          <span style={{ padding: '1rem 0 0 1rem', fontSize: '4rem' }}>→</span>
-          <div className="cell">
-            <ul className="list-group list-striped">
-              {_.map(outputs, li)}
-            </ul>
-          </div>
-        </div>
-      </React.Fragment>
-    );
+    return axios.get(url, { headers })
+      .catch((/* error */) => {});
   }
 
   render() {
     const { data } = this.props;
+    const { red, bibtex } = this.state;
 
     return (
-      <article key={data.id}>
+      <article key={data.id} className="m-b-2">
         <h2>
           <a href={data.html_url}>{data.full_name}</a> <small>{data.description}</small>
         </h2>
+
+        {data.doc &&
+          <blockquote>{data.doc}</blockquote>
+        }
 
         <div style={{ float: 'right' }}>
           {data.homepage &&
@@ -97,7 +94,9 @@ export default class Project extends Component {
           }
         </div>
 
-        {this.renderRed()}
+        <RED red={red} />
+
+        <Bibtex bibtex={bibtex} />
       </article>
     );
   }
