@@ -77,7 +77,7 @@ export default class Project extends Component {
     const { red, bibtex } = this.state;
 
     return (
-      <article key={data.id} className="m-b-2">
+      <article key={data.id} className="dashed-top p-t-1 p-b-2">
         <h2>
           <a href={data.html_url}>{data.full_name}</a> <small>{data.description}</small>
         </h2>

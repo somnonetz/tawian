@@ -48,7 +48,7 @@ export default class App extends Component {
 
     return (
       <React.Fragment>
-        <div className="grid-inline">
+        <div className="grid-inline p-b-1">
           <p>Showing {count} of {projects.length} projects.</p>
           <Searchbar onChange={this.onSearchChange} />
         </div>
