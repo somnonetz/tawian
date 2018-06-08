@@ -50,8 +50,8 @@ export default class Project extends Component {
 
   loadBibFile = (promise) => {
     promise.then((response) => {
-      const json = JSON.parse(atob(response.data.content));
-      this.setState({ bibtex: json });
+      const bibtex = atob(response.data.content);
+      this.setState({ bibtex });
     });
   }
 
