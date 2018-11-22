@@ -1,6 +1,6 @@
 {
-  "main.js": "/tawian/static/js/main.d9f70b22.chunk.js",
-  "main.js.map": "/tawian/static/js/main.d9f70b22.chunk.js.map",
+  "main.js": "/tawian/static/js/main.8a6faa93.chunk.js",
+  "main.js.map": "/tawian/static/js/main.8a6faa93.chunk.js.map",
   "static/css/1.7be50f23.chunk.css": "/tawian/static/css/1.7be50f23.chunk.css",
   "static/js/1.88ece8a6.chunk.js": "/tawian/static/js/1.88ece8a6.chunk.js",
   "static/js/1.88ece8a6.chunk.js.map": "/tawian/static/js/1.88ece8a6.chunk.js.map",
@@ -9,6 +9,6 @@
   "static/media/index.css": "/tawian/static/media/cousine-latin-700italic.d0dcb79a.woff",
   "static/css/1.7be50f23.chunk.css.map": "/tawian/static/css/1.7be50f23.chunk.css.map",
   "index.html": "/tawian/index.html",
-  "precache-manifest.d847f6f33672b158bce88a726e260eb3.js": "/tawian/precache-manifest.d847f6f33672b158bce88a726e260eb3.js",
+  "precache-manifest.cba8e96379fe2eb2fbcac88df0f0ea3f.js": "/tawian/precache-manifest.cba8e96379fe2eb2fbcac88df0f0ea3f.js",
   "service-worker.js": "/tawian/service-worker.js"
 }

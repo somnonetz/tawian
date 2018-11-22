@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/tawian/precache-manifest.d847f6f33672b158bce88a726e260eb3.js"
+  "/tawian/precache-manifest.cba8e96379fe2eb2fbcac88df0f0ea3f.js"
 );
 
 workbox.clientsClaim();

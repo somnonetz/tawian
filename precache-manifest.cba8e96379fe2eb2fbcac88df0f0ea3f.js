@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "d9f70b2235e03eeec59f",
-    "url": "/tawian/static/js/main.d9f70b22.chunk.js"
+    "revision": "8a6faa93cbaae16ec179",
+    "url": "/tawian/static/js/main.8a6faa93.chunk.js"
   },
   {
     "revision": "88ece8a67bc5bbcb28e7",
@@ -48,7 +48,7 @@ self.__precacheManifest = [
     "url": "/tawian/static/media/cousine-latin-700italic.d0dcb79a.woff"
   },
   {
-    "revision": "1a89788cf1810e82aa77429497a04023",
+    "revision": "5b11695c475648dd7ba3ac355184e522",
     "url": "/tawian/index.html"
   }
 ];
