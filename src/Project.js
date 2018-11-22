@@ -7,6 +7,8 @@ import RED from './RED';
 import Bibtex from './Bibtex';
 import Zenodo from './Zenodo';
 
+const TOKEN = process.env.REACT_APP_PORT;
+
 const FILES = {
   'red.yml': 'loadRedFile',
   'references.bib': 'loadBibFile',
@@ -22,6 +24,7 @@ export default class Project extends Component {
   state = {
     red: null,
     bibtex: null,
+    files: null,
   }
 
   componentDidMount() {
@@ -35,7 +38,7 @@ export default class Project extends Component {
           if (FILES[file.name] && file.size > 0) {
             this[FILES[file.name]](this.loadFile(file.name));
           }
-        })
+        });
         this.setState({ files: response.data });
       });
   }
@@ -66,6 +69,7 @@ export default class Project extends Component {
     const url = `https://api.github.com/repos/${this.props.data.full_name}/contents/${filename}`;
     const headers = {
       Accept: 'application/vnd.github.mercy-preview+json',
+      Authorization: TOKEN && `token ${TOKEN}`,
     };
 
     return axios.get(url, { headers })
