@@ -1,14 +1,14 @@
 {
-  "main.css": "static/css/main.ddb030ec.css",
-  "main.css.map": "static/css/main.ddb030ec.css.map",
-  "main.js": "static/js/main.6ddd45b5.js",
-  "main.js.map": "static/js/main.6ddd45b5.js.map",
-  "static/media/cousine-latin-400.woff": "static/media/cousine-latin-400.b548795e.woff",
-  "static/media/cousine-latin-400.woff2": "static/media/cousine-latin-400.9ea5649e.woff2",
-  "static/media/cousine-latin-400italic.woff": "static/media/cousine-latin-400italic.43f9b4a1.woff",
-  "static/media/cousine-latin-400italic.woff2": "static/media/cousine-latin-400italic.3bb8471c.woff2",
-  "static/media/cousine-latin-700.woff": "static/media/cousine-latin-700.e5f04102.woff",
-  "static/media/cousine-latin-700.woff2": "static/media/cousine-latin-700.11d4aa02.woff2",
-  "static/media/cousine-latin-700italic.woff": "static/media/cousine-latin-700italic.d0dcb79a.woff",
-  "static/media/cousine-latin-700italic.woff2": "static/media/cousine-latin-700italic.9ff9c02c.woff2"
+  "main.js": "/tawian/static/js/main.d9f70b22.chunk.js",
+  "main.js.map": "/tawian/static/js/main.d9f70b22.chunk.js.map",
+  "static/css/1.7be50f23.chunk.css": "/tawian/static/css/1.7be50f23.chunk.css",
+  "static/js/1.88ece8a6.chunk.js": "/tawian/static/js/1.88ece8a6.chunk.js",
+  "static/js/1.88ece8a6.chunk.js.map": "/tawian/static/js/1.88ece8a6.chunk.js.map",
+  "runtime~main.js": "/tawian/static/js/runtime~main.d17257e3.js",
+  "runtime~main.js.map": "/tawian/static/js/runtime~main.d17257e3.js.map",
+  "static/media/index.css": "/tawian/static/media/cousine-latin-700italic.d0dcb79a.woff",
+  "static/css/1.7be50f23.chunk.css.map": "/tawian/static/css/1.7be50f23.chunk.css.map",
+  "index.html": "/tawian/index.html",
+  "precache-manifest.d847f6f33672b158bce88a726e260eb3.js": "/tawian/precache-manifest.d847f6f33672b158bce88a726e260eb3.js",
+  "service-worker.js": "/tawian/service-worker.js"
 }
